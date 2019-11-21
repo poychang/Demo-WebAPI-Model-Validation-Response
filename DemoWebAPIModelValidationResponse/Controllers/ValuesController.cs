@@ -1,4 +1,6 @@
+﻿using DemoWebAPIModelValidationResponse.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace DemoWebAPIModelValidationResponse.Controllers
 {
@@ -15,15 +17,16 @@ namespace DemoWebAPIModelValidationResponse.Controllers
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
+        public ActionResult<int> Get(int id)
         {
-            return "value";
+            return id;
         }
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody] string value)
+        public ActionResult Post([FromBody] ComplexModel complexModel)
         {
+            return new JsonResult(complexModel);
         }
     }
 }
